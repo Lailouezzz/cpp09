@@ -1,15 +1,15 @@
 CXX			:=	c++
 
 CPPFLAGS	:=	-Wall -Wextra -Werror -std=c++98
-# CPPFLAGS	:=	$(CPPFLAGS) -g -DDEBUG
 
-NAME		:=	finder
+NAME		:=	RPN
 
 BUILD_DIR	:=	build
 
 RM			:=	rm -f
 
 FILES		:=					\
+				RPN				\
 				main
 
 SRCS		:=	$(addsuffix .cpp,$(FILES))
