@@ -10,15 +10,12 @@ extern "C" const char _binary_data_csv_end[];
 class BitcoinExchange
 {
 	public:
+		static float		getPriceOfDay(int const& date);
+
+	private:
 		BitcoinExchange();
-		BitcoinExchange(BitcoinExchange const& o);
-		~BitcoinExchange();
-
-		BitcoinExchange		&operator=(BitcoinExchange const& o);
-
-	// private:
-		static std::map<std::string, float>	parseBdd();
-		static const std::map<std::string, float> m_price_history;
+		static std::map<int, float, std::greater<int> >	parseBdd();
+		static const std::map<int, float, std::greater<int> > m_price_history;
 };
 
 #endif

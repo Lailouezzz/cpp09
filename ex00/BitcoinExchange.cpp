@@ -3,12 +3,13 @@
 #include <sstream>
 #include <iostream>
 #include <cstdlib>
+#include <algorithm>
 
-const std::map<std::string, float>	BitcoinExchange::m_price_history = BitcoinExchange::parseBdd();
+const std::map<int, float, std::greater<int> >	BitcoinExchange::m_price_history = BitcoinExchange::parseBdd();
 
-std::map<std::string, float>	BitcoinExchange::parseBdd()
+std::map<int, float, std::greater<int> >	BitcoinExchange::parseBdd()
 {
-	std::map<std::string, float>	bdd;
+	std::map<int, float, std::greater<int> >	bdd;
 	std::string						s(_binary_data_csv_start, _binary_data_csv_end - _binary_data_csv_start);
 	std::istringstream				iss(s);
 
@@ -16,31 +17,15 @@ std::map<std::string, float>	BitcoinExchange::parseBdd()
 	std::getline(iss, line); // Ignore first line
 	while (std::getline(iss, line))
 	{
-		std::string	date(line.substr(0, 10));
+		std::string	date = line.substr(0, 4) + line.substr(5, 2) + line.substr(8, 2);
 		std::string	price(line.substr(11));
-		bdd[date] = atof(price.c_str());
+		bdd[atoi(date.c_str())] = atof(price.c_str());
 	}
 	return (bdd);
 }
 
-BitcoinExchange::BitcoinExchange()
+float	BitcoinExchange::getPriceOfDay(int const& date)
 {
-
-}
-
-BitcoinExchange::BitcoinExchange(BitcoinExchange const& o)
-{
-	*this = o;
-}
-
-BitcoinExchange::~BitcoinExchange()
-{
-
-}
-
-BitcoinExchange		&BitcoinExchange::operator=(BitcoinExchange const& o)
-{
-	if (&o == this)
-		return (*this);
-	return (*this);
+	std::map<int, float, std::greater<int> >::const_iterator	itr = m_price_history.lower_bound(date);
+	return (itr->second);
 }
