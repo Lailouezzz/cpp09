@@ -1,9 +1,8 @@
 CXX			:=	c++
 
 CPPFLAGS	:=	-Wall -Wextra -Werror -std=c++98
-# CPPFLAGS	:=	$(CPPFLAGS) -g -DDEBUG
 
-NAME		:=	finder
+NAME		:=	PmergeMe
 
 BUILD_DIR	:=	build
 
