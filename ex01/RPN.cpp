@@ -84,6 +84,8 @@ void	RPN::add()
 void	RPN::div()
 {
 	int	a = m_stack.top();
+	if (a == 0)
+		throw std::exception();
 	m_stack.pop();
 	m_stack.top() /= a;
 }
