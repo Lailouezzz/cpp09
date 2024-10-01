@@ -34,8 +34,21 @@ RPN::RPN() :
 {
 }
 
+RPN::RPN(RPN const& o)
+{
+	*this = o;
+}
+
 RPN::~RPN()
 {
+}
+
+RPN		&RPN::operator=(RPN const& o)
+{
+	if (this == &o)
+		return (*this);
+	this->m_stack = o.m_stack;
+	return (*this);
 }
 
 void	RPN::operator<<(char const& c)

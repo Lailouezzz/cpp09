@@ -29,3 +29,19 @@ float	BitcoinExchange::getPriceOfDay(int const& date)
 	std::map<int, float, std::greater<int> >::const_iterator	itr = m_price_history.lower_bound(date);
 	return (itr->second);
 }
+
+BitcoinExchange::~BitcoinExchange()
+{
+}
+
+BitcoinExchange::BitcoinExchange(BitcoinExchange const& o)
+{
+	*this = o;
+}
+
+BitcoinExchange	&BitcoinExchange::operator=(BitcoinExchange const& o)
+{
+	if (this == &o)
+		return (*this);
+	return (*this);
+}

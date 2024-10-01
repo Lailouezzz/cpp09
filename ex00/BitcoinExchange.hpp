@@ -14,6 +14,10 @@ class BitcoinExchange
 
 	private:
 		BitcoinExchange();
+		~BitcoinExchange();
+		BitcoinExchange(BitcoinExchange const& o);
+		BitcoinExchange	&operator=(BitcoinExchange const& o);
+
 		static std::map<int, float, std::greater<int> >	parseBdd();
 		static const std::map<int, float, std::greater<int> > m_price_history;
 };

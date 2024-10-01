@@ -11,8 +11,10 @@ class RPN
 
 	private:
 		RPN();
+		RPN(RPN const& o);
 		~RPN();
 
+		RPN		&operator=(RPN const& o);
 		void	operator<<(char const& c);
 		void	sub();
 		void	add();
