@@ -1,6 +1,6 @@
 CXX			:=	c++
 
-CPPFLAGS	:=	-Wall -Wextra -std=c++98 -g3
+CPPFLAGS	:=	-Wall -Wextra -Werror -std=c++98
 
 NAME		:=	PmergeMe
 
