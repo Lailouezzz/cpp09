@@ -75,8 +75,10 @@ void	RPN::operator<<(char const& c)
 	}
 	/* MAGIC */
 	int	id = c - 42 /* '*' */;
-	if (id < 0 || id >= static_cast<int>(sizeof(operatorTable) / sizeof(*operatorTable)) || operatorTable[id] == NULL || m_stack.size() < 2)
+	if (id < 0 || id >= static_cast<int>(sizeof(operatorTable) / sizeof(*operatorTable)) || operatorTable[id] == NULL)
 		throw RPN::RPNException("unknown operator");
+	if (m_stack.size() < 2)
+		throw RPN::RPNException("stack size < 2");
 	(this->*operatorTable[id])();
 }
 
